@@ -5,7 +5,7 @@ import android.util.Log
 import android.widget.Toast.LENGTH_LONG
 import android.widget.Toast.makeText
 import androidx.appcompat.app.AppCompatActivity
-import education.cccp.basics.MainActivity.Companion.FOO_KEY
+import education.cccp.basics.MyApp.Companion.FOO_KEY
 import education.cccp.basics.R.layout.activity_second
 
 class SecondActivity : AppCompatActivity() {

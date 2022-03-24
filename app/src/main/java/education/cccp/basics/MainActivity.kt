@@ -4,16 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import education.cccp.basics.MyApp.Companion.FOO_KEY
+import education.cccp.basics.MyApp.Companion.FOO_VALUE
 import education.cccp.basics.R.layout.activity_main
 
 class MainActivity : AppCompatActivity() {
-
-    companion object {
-        const val FOO_KEY = "foo_key"
-        const val FOO_VALUE = "foo_value"
-    }
 
     lateinit var myApp: MyApp
     lateinit var model: DataModel
@@ -27,6 +25,11 @@ class MainActivity : AppCompatActivity() {
             connection = "connection à ${MainActivity::javaClass.name}"
         }
         model = ViewModelProvider(this).get(DataModel::class.java)
+        model.run {
+            if (model.name.isNotBlank()) {
+                Toast.makeText(this@MainActivity, name, Toast.LENGTH_LONG).show()
+            }
+        }
     }
 
     override fun onResume() {
@@ -67,6 +70,7 @@ class MainActivity : AppCompatActivity() {
             putExtra(FOO_KEY, FOO_VALUE)
             startActivity(this)
         }
+        model.name = "Doe"
     }
 
 

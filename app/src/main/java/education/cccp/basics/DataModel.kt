@@ -12,6 +12,8 @@ class DataModel : ViewModel() {
         )
     }
 
+    lateinit var name: String
+
     override fun onCleared() {
         super.onCleared()
         Log.d(
