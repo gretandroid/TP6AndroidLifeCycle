@@ -1,20 +1,25 @@
 package education.cccp.basics
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
+import android.widget.Toast.LENGTH_LONG
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import education.cccp.basics.MyApp.Companion.FOO_KEY
-import education.cccp.basics.MyApp.Companion.FOO_VALUE
+import education.cccp.basics.R.id.*
 import education.cccp.basics.R.layout.activity_main
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var myApp: MyApp
     lateinit var model: DataModel
+
+    lateinit var firstNameTextView: TextView
+    lateinit var lastNameTextView: TextView
+    lateinit var ageTextView: TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,11 +31,28 @@ class MainActivity : AppCompatActivity() {
         }
         model = ViewModelProvider(this).get(DataModel::class.java)
         model.run {
-            if (model.name.isNotBlank()) {
-                Toast.makeText(this@MainActivity, name, Toast.LENGTH_LONG).show()
+            if (model.lastName.isNotBlank()) {
+                Toast.makeText(
+                    this@MainActivity,
+                    lastName,
+                    LENGTH_LONG
+                ).show()
             }
         }
+        firstNameTextView = findViewById(firstNameTextViewId)
+        lastNameTextView = findViewById(lastNameTextViewId)
+        ageTextView = findViewById(ageTextViewId)
     }
+
+    fun display() {
+        model.run {
+            traitement()
+            firstNameTextView.text = firstName
+            lastNameTextView.text = lastName
+            ageTextView.text = age.toString()
+        }
+    }
+
 
     override fun onResume() {
         super.onResume()
@@ -63,14 +85,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onClickButtonEvent(view: View) {
-        Intent(
-            this,
-            SecondActivity::class.java
-        ).apply {
-            putExtra(FOO_KEY, FOO_VALUE)
-            startActivity(this)
-        }
-        model.name = "Doe"
+//        Intent(
+//            this,
+//            SecondActivity::class.java
+//        ).apply {
+//            putExtra(FOO_KEY, FOO_VALUE)
+//            startActivity(this)
+//        }
+        model.lastName = "Doe"
     }
 
 

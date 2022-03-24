@@ -2,6 +2,7 @@ package education.cccp.basics
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import kotlin.random.Random.Default.nextInt
 
 class DataModel : ViewModel() {
 
@@ -12,7 +13,10 @@ class DataModel : ViewModel() {
         )
     }
 
-    lateinit var name: String
+    var lastName: String=""
+    var firstName: String=""
+    var age: Int = 0
+
 
     override fun onCleared() {
         super.onCleared()
@@ -20,5 +24,13 @@ class DataModel : ViewModel() {
             this::class.java.name,
             "data model cleared"
         )
+    }
+
+    fun traitement() {
+        nextInt(1, 100).apply {
+            firstName += this
+            lastName += this
+            age = this
+        }
     }
 }

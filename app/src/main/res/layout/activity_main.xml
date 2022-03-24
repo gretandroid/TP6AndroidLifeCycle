@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/firstNameTextViewId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -18,35 +18,35 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/lastNameTextViewId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="@+id/firstNameTextViewId"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintStart_toStartOf="@+id/firstNameTextViewId"
+        app:layout_constraintTop_toBottomOf="@+id/firstNameTextViewId" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/ageTextViewId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/textView5"
+        app:layout_constraintEnd_toEndOf="@+id/lastNameTextViewId"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintStart_toStartOf="@+id/lastNameTextViewId"
+        app:layout_constraintTop_toBottomOf="@+id/lastNameTextViewId" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:onClick="onClickButtonEvent"
         android:text="Button"
-        app:layout_constraintEnd_toEndOf="@+id/textView6"
-        app:layout_constraintStart_toStartOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintEnd_toEndOf="@+id/ageTextViewId"
+        app:layout_constraintStart_toStartOf="@+id/ageTextViewId"
+        app:layout_constraintTop_toBottomOf="@+id/ageTextViewId" />
 </androidx.constraintlayout.widget.ConstraintLayout>
