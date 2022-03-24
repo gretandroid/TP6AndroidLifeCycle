@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         }
         model = ViewModelProvider(this).get(DataModel::class.java)
         model.run {
-            if (model.lastName.isNotBlank()) {
+            if (model.lastName.value?.isNotBlank()) {
                 Toast.makeText(
                     this@MainActivity,
                     lastName,
@@ -46,13 +46,16 @@ class MainActivity : AppCompatActivity() {
 
     fun display() {
         model.run {
-            traitement()
-            firstNameTextView.text = firstName
-            lastNameTextView.text = lastName
+            firstNameTextView.text = firstName.value
+            lastNameTextView.text = lastName.value
             ageTextView.text = age.toString()
         }
     }
 
+    fun onClickButtonEvent(view: View) {
+        model.traitement()
+        display()
+    }
 
     override fun onResume() {
         super.onResume()
@@ -82,17 +85,6 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         Log.d(MainActivity::class.java.name, "onStart")
-    }
-
-    fun onClickButtonEvent(view: View) {
-//        Intent(
-//            this,
-//            SecondActivity::class.java
-//        ).apply {
-//            putExtra(FOO_KEY, FOO_VALUE)
-//            startActivity(this)
-//        }
-        model.lastName = "Doe"
     }
 
 
