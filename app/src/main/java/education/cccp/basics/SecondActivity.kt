@@ -9,6 +9,9 @@ import education.cccp.basics.MainActivity.Companion.FOO_KEY
 import education.cccp.basics.R.layout.activity_second
 
 class SecondActivity : AppCompatActivity() {
+
+    lateinit var myApp: MyApp
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(activity_second)
@@ -23,6 +26,14 @@ class SecondActivity : AppCompatActivity() {
                 }
             }"
         )
+        myApp = application as MyApp
+        myApp.run {
+            makeText(
+                this@SecondActivity,
+                connection,
+                LENGTH_LONG
+            ).show()
+        }
     }
 
     override fun onResume() {

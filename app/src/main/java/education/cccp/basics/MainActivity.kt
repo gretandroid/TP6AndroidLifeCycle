@@ -1,23 +1,32 @@
 package education.cccp.basics
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import education.cccp.basics.R.layout.activity_main
 
 class MainActivity : AppCompatActivity() {
 
     companion object {
         const val FOO_KEY = "foo_key"
+        const val FOO_VALUE = "foo_value"
     }
+
+    lateinit var myApp: MyApp
+    lateinit var model: DataModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(activity_main)
         Log.d(MainActivity::class.java.name, "onCreate")
-
+        myApp = application as MyApp
+        myApp.apply {
+            connection = "connection à ${MainActivity::javaClass.name}"
+        }
+        model = ViewModelProvider(this).get(DataModel::class.java)
     }
 
     override fun onResume() {
@@ -55,7 +64,7 @@ class MainActivity : AppCompatActivity() {
             this,
             SecondActivity::class.java
         ).apply {
-            putExtra("foo_key", "foo_value")
+            putExtra(FOO_KEY, FOO_VALUE)
             startActivity(this)
         }
     }
